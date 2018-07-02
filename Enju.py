@@ -32,18 +32,14 @@ async def aide(ctx):
     await ctx.send(embed=em)
 
 @bot.command()
-async def clear(ctx, amount: int):
-    await ctx.channel.purge(limit=amount)
-
-
-@bot.command(pass_context=True)
-async def purge(ctx, nombre):
+async def purge(ctx, amount: int):
 	if ctx.author.id == 222017802087825408:
-		await bot.purge_from(ctx.message.channel, limit=int(nombre))
+        await ctx.channel.purge(limit=amount)
 
 	else :
 		msg = await ctx.send("Seul mon Kinji peut utiliser cette commande !")
 		await autoreaction(ctx, msg)
+
 
 @bot.command(pass_context=True)
 async def enju(ctx):
