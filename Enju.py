@@ -56,6 +56,15 @@ async def dit(ctx, *, message):
         await autoreaction(ctx, msg)
 
 
+@bot.command(pass_context=True)
+async def je_t'aime(ctx):
+    if ctx.author.id == 222017802087825408:
+        msg = await ctx.send(str(Moi aussi !! ❤))
+        await autoreaction(ctx, msg)
+    else:
+        msg = await ctx.send("Mon coeur appartient à Kinji")
+        await autoreaction(ctx, msg)
+
 
 @bot.command(pass_context=True)
 async def dits(ctx, *, message):
@@ -66,6 +75,7 @@ async def dits(ctx, *, message):
     else:
         msg = await ctx.send("Seul mon Kinji peut utiliser cette commande !")
         await autoreaction(ctx, msg)
+
 
 
 @bot.command(pass_context=True)
