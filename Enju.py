@@ -60,11 +60,11 @@ async def dit(ctx, *, message):
 async def jtm(ctx):
     if ctx.author.id == 222017802087825408:
         msg = await ctx.send("Moi aussi !! ❤")
-        await autoreaction(ctx, msg)
+        #await autoreaction(ctx, msg)
         await msg.add_reaction("❤")
     else:
         msg = await ctx.send("Mon coeur appartient à Kinji")
-        await autoreaction(ctx, msg)
+        #await autoreaction(ctx, msg)
         await msg.add_reaction("💔")
 
 
@@ -97,6 +97,5 @@ async def avatar(ctx, user: discord.Member):
 
 async def autoreaction(ctx, msg):
     await msg.add_reaction(":enju:463080771465510912")
-    await bot.wait_for("reaction_add", timeout=40, check=lambda r, u: u == ctx.author and r.message.id == msg.id)
 
 bot.run(os.getenv("TOKEN"))
