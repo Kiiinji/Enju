@@ -156,7 +156,7 @@ async def autoreaction(ctx, msg):
 
 
 
-bot.run('NDYzMTQ4NzM4NDQyMDM1MjEw.Dhut6Q.5Lpuua0Zk66U4dY_Qlh4-zqLn-A')
+bot.run('')
 
 
 
