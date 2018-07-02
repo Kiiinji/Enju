@@ -59,7 +59,7 @@ async def dit(ctx, *, message):
 @bot.command(pass_context=True)
 async def jtm(ctx):
     if ctx.author.id == 222017802087825408:
-        msg = await ctx.send(Moi aussi !! ❤)
+        msg = await ctx.send("Moi aussi !! ❤")
         await autoreaction(ctx, msg)
     else:
         msg = await ctx.send("Mon coeur appartient à Kinji")
