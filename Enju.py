@@ -83,4 +83,4 @@ async def autoreaction(ctx, msg):
     await msg.add_reaction(":enju:463080771465510912")
     await bot.wait_for("reaction_add", timeout=40, check=lambda r, u: u == ctx.author and r.message.id == msg.id)
 
-bot.run('NDYzMTQ4NzM4NDQyMDM1MjEw.DhtR9g.HPMujQF9nYtFfom45qCevi_0HVs')
+bot.run(os.getenv("TOKEN"))
