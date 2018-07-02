@@ -26,7 +26,7 @@ async def botcheck(ctx):
 async def aide(ctx):
     em = discord.Embed(title="Commandes d'Enju", description="", color=discord.Colour.green())
     em.set_author(name="")
-    em.add_field(name="!enju", value="Envoie une image d`Enju", inline=False)
+    em.add_field(name="!enju", value="Envoie une image d'Enju", inline=False)
     em.add_field(name="!avatar", value="Affiche l'avatar d'un utilisateur", inline=False)
     em.add_field(name="!emoji", value="Affiche un emoji en plus gros", inline=False)
     await ctx.send(embed=em)
