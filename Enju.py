@@ -31,11 +31,16 @@ async def aide(ctx):
     em.add_field(name="!emoji", value="Affiche un emoji en plus gros", inline=False)
     await ctx.send(embed=em)
 
+@bot.command()
+async def clear(ctx, amount: int):
+    await ctx.channel.purge(limit=amount)
+
 
 @bot.command(pass_context=True)
 async def purge(ctx, nombre):
 	if ctx.author.id == 222017802087825408:
-		await TextChannel.purge()
+		await bot.purge_from(ctx.message.channel, limit=int(nombre))
+
 	else :
 		msg = await ctx.send("Seul mon Kinji peut utiliser cette commande !")
 		await autoreaction(ctx, msg)
