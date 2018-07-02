@@ -156,7 +156,7 @@ async def autoreaction(ctx, msg):
 
 
 
-bot.run('')
+bot.run(os.getenv("TOKEN"))
 
 
 
