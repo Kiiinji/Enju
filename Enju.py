@@ -43,7 +43,7 @@ async def purge(ctx, amount):
 
 @bot.command(pass_context=True)
 async def enju(ctx):
-    fp = "Donnes/Img/Enju/{}".format(random.choice(os.listdir("Donnes/Img/Enju")))
+    fp = "Data/Img/Enju/{}".format(random.choice(os.listdir("Data/Img/Enju")))
     await ctx.send(file=discord.File(fp))
 
 @bot.command(pass_context=True)
@@ -61,12 +61,10 @@ async def jtm(ctx):
     if ctx.author.id == 222017802087825408:
         msg = await ctx.send("Moi aussi !! ❤")
         await msg.add_reaction(":enju:463080771465510912")
-        #await autoreaction(ctx, msg)
         await msg.add_reaction("❤")
     else:
         msg = await ctx.send("Mon coeur appartient à Kinji")
         await msg.add_reaction(":enju:463080771465510912")
-        #await autoreaction(ctx, msg)
         await msg.add_reaction("💔")
 
 
