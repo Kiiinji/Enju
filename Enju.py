@@ -35,7 +35,7 @@ async def aide(ctx):
     em.add_field(name="!neko", value="Envoie une image de neko", inline=False)
     em.add_field(name="!loli", value="Envoie une image de loli", inline=False)
     em.add_field(name="!lewdneko", value="Envoie une image érotique de neko", inline=False)
-    em.add_field(name="!lewdloli", value="Envoie une image érotique de loli", inline=False)
+    em.add_field(name="!hloli", value="Envoie une image H de loli", inline=False)
     em.add_field(name="!hentai", value="Envoie une image de hentai", inline=False)
     em.set_thumbnail(url = "https://i.gyazo.com/4f452d2b77748f7561902cc0fe824d37.png")
     await ctx.send(embed=em)
@@ -104,7 +104,7 @@ async def lewdneko(ctx):
 
 
 @bot.command(pass_context=True)
-async def lewdloli(ctx):
+async def hloli(ctx):
 	if ctx.message.channel.is_nsfw() is False:
    		 await ctx.send("🔞 Pas de choses obscènes dans ce channel ! 🔞")
 	if ctx.message.channel.is_nsfw() is True:
@@ -154,6 +154,8 @@ async def avatar(ctx, user: discord.Member):
 
 async def autoreaction(ctx, msg):
     await msg.add_reaction(":enju:463080771465510912")
+
+
 
 
 bot.run(os.getenv("TOKEN"))
