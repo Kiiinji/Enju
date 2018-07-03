@@ -99,6 +99,7 @@ async def lewdneko(ctx):
 	if ctx.message.channel.is_nsfw() is True:
     		r = requests.get('https://nekos.life/api/v2/img/lewd')
 	js = r.json()
+	await ctx.channel.purge(limit=int(1))
 	await ctx.send(js['url'])
 
 
@@ -109,6 +110,7 @@ async def lewdloli(ctx):
 	if ctx.message.channel.is_nsfw() is True:
     		r = requests.get('https://nekos.life/api/v2/img/smallboobs')
 	js = r.json()
+	await ctx.channel.purge(limit=int(1))
 	await ctx.send(js['url'])
 
 @bot.command(pass_context=True)
@@ -118,6 +120,7 @@ async def hentai(ctx):
 	if ctx.message.channel.is_nsfw() is True:
     		r = requests.get('https://nekos.life/api/v2/img/hentai')
 	js = r.json()
+	await ctx.channel.purge(limit=int(1))
 	await ctx.send(js['url'])
 	
 
@@ -136,7 +139,6 @@ async def dits(ctx, *, message):
 
 @bot.command(pass_context=True)
 async def emoji(ctx, emoji: discord.Emoji):
-    #embed = discord.Embed(title = ":{}:".format(emoji.name),color=0x4286f4)
     embed = discord.Embed(color=0x4286f4)
     embed.set_image(url=emoji.url)
     await ctx.send(embed=embed)
@@ -152,8 +154,6 @@ async def avatar(ctx, user: discord.Member):
 
 async def autoreaction(ctx, msg):
     await msg.add_reaction(":enju:463080771465510912")
-
-
 
 
 bot.run(os.getenv("TOKEN"))
