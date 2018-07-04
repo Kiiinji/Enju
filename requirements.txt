@@ -3,3 +3,4 @@ cached_property
 requests
 youtube-dl
 pynacl
+ffmpeg
