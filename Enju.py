@@ -14,7 +14,7 @@ from discord.ext.commands import Bot
 from discord import opus
 import discord
 from discord.ext import commands
-import youtube_dl   # gets video metadata
+import youtube_dl  
 
 
 def get_metadata(query):
@@ -228,15 +228,15 @@ async def leave(ctx):
 
 @bot.command()
 async def play(ctx, url):
-	# Getting the video without blocking the bot
+	
 	url = await ctx.bot.loop.run_in_executor(None, get_metadata, url)
 	await ctx.send('⌛Chargement de la vidéo..⏳')
     await msg.add_reaction(":enju:463080771465510912")
 
-	# Making the FFMPEG pipe to stream the video data
+	
 	ffmpeg = discord.FFmpegPCMAudio(url)
 
-	# Play the music
+	
 	ctx.voice_client.play(ffmpeg)
 
 @bot.command()
