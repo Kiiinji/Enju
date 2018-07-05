@@ -230,7 +230,7 @@ async def leave(ctx):
 async def play(ctx, url):
 
 	url = await ctx.bot.loop.run_in_executor(None, get_metadata, url)
-	await ctx.send('⌛Chargement de la vidéo..⏳')
+	msg = await ctx.send('⌛Chargement de la vidéo..⏳')
 	await msg.add_reaction(":enju:463080771465510912")
 
 
@@ -242,14 +242,20 @@ async def play(ctx, url):
 @bot.command()
 async def pause(ctx):
 	ctx.voice_client.pause()
+	msg = await ctx.send('⛔Vidéo mise en pause !⛔')
+	await msg.add_reaction(":enju:463080771465510912")
 
 @bot.command()
 async def resume(ctx):
 	ctx.voice_client.resume()
+	msg = await ctx.send('🎶Reprise de la vidéo !🎶')
+	await msg.add_reaction(":enju:463080771465510912")
 
 @bot.command()
 async def stop(ctx):
 	ctx.voice_client.stop()
+	msg = await ctx.send('❌Vidéo arrêtée !❌')
+	await msg.add_reaction(":enju:463080771465510912")
 
 async def autoreaction(ctx, msg):
     await msg.add_reaction(":enju:463080771465510912")
