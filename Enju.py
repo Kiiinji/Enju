@@ -75,7 +75,7 @@ async def aide(ctx):
     em.set_author(name="")
     em.add_field(name="!enju", value="Envoie une image d'Enju", inline=False)
     em.add_field(name="!avatar", value="Affiche l'avatar d'un utilisateur", inline=False)
-    em.add_field(name="!emoji", value="Affiche un emoji en plus gros", inline=False)
+    em.add_field(name="!emoji", value="Affiche un emoji custom du serveur en plus gros", inline=False)
     em.add_field(name="!jtm", value="Déclare ta flamme à Enju", inline=False)
     em.add_field(name="!neko", value="Envoie une image de neko", inline=False)
     em.add_field(name="!loli", value="Envoie une image de loli", inline=False)
@@ -230,6 +230,8 @@ async def leave(ctx):
 async def play(ctx, url):
 	# Getting the video without blocking the bot
 	url = await ctx.bot.loop.run_in_executor(None, get_metadata, url)
+	await ctx.send('⌛Chargement de la vidéo..⏳')
+    await msg.add_reaction(":enju:463080771465510912")
 
 	# Making the FFMPEG pipe to stream the video data
 	ffmpeg = discord.FFmpegPCMAudio(url)
@@ -251,7 +253,6 @@ async def stop(ctx):
 
 async def autoreaction(ctx, msg):
     await msg.add_reaction(":enju:463080771465510912")
-
 
 
 bot.run(os.getenv("TOKEN"))
