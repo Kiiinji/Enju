@@ -12,6 +12,21 @@ import io
 from discord.ext import commands
 from discord.ext.commands import Bot
 from discord import opus
+import discord
+from discord.ext import commands
+import youtube_dl   # gets video metadata
+
+
+def get_metadata(query):
+    return youtube_dl.YoutubeDL({
+        "format": "ogg[abr>0]/m4a[abr>0]/webm[abr>0]/bestaudio/best",
+        "ignoreerrors": True,
+        "default_search": "auto",
+        "source_address": "0.0.0.0",
+        "quiet": True
+    }).extract_info(query, download=False)['url']
+
+
 
 OPUS_LIBS = ['libopus-0.x86.dll', 'libopus-0.x64.dll', 'libopus-0.dll', 'libopus.so.0', 'libopus.0.dylib']
 
@@ -206,11 +221,27 @@ async def leave(ctx):
 
 
 @bot.command()
-async def play(ctx):
-    	channel = ctx.message.author.voice.channel
-    	vc = await channel.connect()
-    	vc.play(discord.FFmpegPCMAudio('ngnl.mp3'), after=None)
+async def play(ctx, url):
+	# Getting the video without blocking the bot
+	url = await ctx.bot.loop.run_in_executor(None, get_metadata, url)
 
+	# Making the FFMPEG pipe to stream the video data
+	ffmpeg = discord.FFmpegPCMAudio(url)
+
+	# Play the music
+	ctx.voice_client.play(ffmpeg)
+
+@bot.command()
+async def pause(ctx):
+	ctx.voice_client.pause()
+
+@bot.command()
+async def resume(ctx):
+	ctx.voice_client.resume()
+
+@bot.command()
+async def stop(ctx):
+	ctx.voice_client.stop()
 
 async def autoreaction(ctx, msg):
     await msg.add_reaction(":enju:463080771465510912")
