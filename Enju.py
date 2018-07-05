@@ -84,7 +84,13 @@ async def aide(ctx):
     em.add_field(name="!hentai", value="Envoie une image de hentai", inline=False)
     em.add_field(name="!join", value="Fait rejoindre Enju dans le channel vocal actuel", inline=False)
     em.add_field(name="!parle", value="Fait jouer un extrait aléatoire d'Enju dans ce channel vocal", inline=False)
+    em.add_field(name="!play", value="Joue une musique depuis un lien youtube dans ce channel vocal", inline=False)
+    em.add_field(name="!pause", value="Met la musique qui est jouée en pause", inline=False)
+    em.add_field(name="!resume", value="Reprend la musique si elle est en pause", inline=False)
+    em.add_field(name="!stop", value="Arrête la musique qui est actuellement jouée", inline=False)
     em.add_field(name="!leave", value="Fait quitter Enju du channel vocal dans lequel elle se trouve", inline=False)
+
+
     em.set_thumbnail(url = "https://i.gyazo.com/4f452d2b77748f7561902cc0fe824d37.png")
     await ctx.send(embed=em)
 
