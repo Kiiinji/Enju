@@ -14,7 +14,7 @@ from discord.ext.commands import Bot
 from discord import opus
 import discord
 from discord.ext import commands
-import youtube_dl  
+import youtube_dl
 
 
 def get_metadata(query):
@@ -140,7 +140,7 @@ async def jtm(ctx):
 async def neko(ctx):
 	async with aiohttp.ClientSession() as cs:
 		async with cs.get('https://nekos.life/api/v2/img/neko') as res:
-			#r = await aiohttp.get('https://nekos.life/api/v2/img/neko')
+
 			js = await res.json()
 			embed = discord.Embed(colour=discord.Colour.orange())
 			embed.set_image(url=js['url'])
@@ -228,15 +228,15 @@ async def leave(ctx):
 
 @bot.command()
 async def play(ctx, url):
-	
+
 	url = await ctx.bot.loop.run_in_executor(None, get_metadata, url)
 	await ctx.send('⌛Chargement de la vidéo..⏳')
-    await msg.add_reaction(":enju:463080771465510912")
+	await msg.add_reaction(":enju:463080771465510912")
 
-	
+
 	ffmpeg = discord.FFmpegPCMAudio(url)
 
-	
+
 	ctx.voice_client.play(ffmpeg)
 
 @bot.command()
@@ -253,6 +253,7 @@ async def stop(ctx):
 
 async def autoreaction(ctx, msg):
     await msg.add_reaction(":enju:463080771465510912")
+
 
 
 bot.run(os.getenv("TOKEN"))
