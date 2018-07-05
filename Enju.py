@@ -3,6 +3,7 @@ import discord
 import random
 import time
 import os
+import aiohttp
 import requests
 import asyncio
 import pickle
@@ -10,7 +11,31 @@ import random
 import io
 from discord.ext import commands
 from discord.ext.commands import Bot
-#discord.opus.load_opus('')
+from discord import opus
+
+OPUS_LIBS = ['libopus-0.x86.dll', 'libopus-0.x64.dll', 'libopus-0.dll', 'libopus.so.0', 'libopus.0.dylib']
+
+def load_opus_lib(opus_libs=OPUS_LIBS):
+
+    if opus.is_loaded():
+
+        return True
+
+    for opus_lib in opus_libs:
+
+        try:
+
+            opus.load_opus(opus_lib)
+
+            return
+
+        except OSError:
+
+            pass
+
+    raise RuntimeError('Could not load an opus lib. Tried %s' % (', '.join(opus_libs)))
+
+load_opus_lib()
 
 bot = commands.Bot(command_prefix='!')
 bot.remove_command('help')
@@ -42,9 +67,9 @@ async def aide(ctx):
     em.add_field(name="!lewdneko", value="Envoie une image érotique de neko", inline=False)
     em.add_field(name="!hloli", value="Envoie une image H de loli", inline=False)
     em.add_field(name="!hentai", value="Envoie une image de hentai", inline=False)
-  #  em.add_field(name="!join", value="Fait rejoindre Enju dans le channel vocal actuel", inline=False)
-   # em.add_field(name="!parle", value="Fait jouer un extrait aléatoire d'Enju dans ce channel vocal", inline=False)
-   # em.add_field(name="!leave", value="Fait quitter Enju du channel vocal dans lequel elle se trouve", inline=False)
+    em.add_field(name="!join", value="Fait rejoindre Enju dans le channel vocal actuel", inline=False)
+    em.add_field(name="!parle", value="Fait jouer un extrait aléatoire d'Enju dans ce channel vocal", inline=False)
+    em.add_field(name="!leave", value="Fait quitter Enju du channel vocal dans lequel elle se trouve", inline=False)
     em.set_thumbnail(url = "https://i.gyazo.com/4f452d2b77748f7561902cc0fe824d37.png")
     await ctx.send(embed=em)
 
@@ -90,51 +115,59 @@ async def jtm(ctx):
 
 
 
-
 @bot.command()
 async def neko(ctx):
-	r = requests.get('https://nekos.life/api/v2/img/neko')
-	js = r.json()
-	embed = discord.Embed(colour=discord.Colour.orange())
-	embed.set_image(url=js['url'])
-	await ctx.send(embed=embed)
+	async with aiohttp.ClientSession() as cs:
+		async with cs.get('https://nekos.life/api/v2/img/neko') as res:
+			#r = await aiohttp.get('https://nekos.life/api/v2/img/neko')
+			js = await res.json()
+			embed = discord.Embed(colour=discord.Colour.orange())
+			embed.set_image(url=js['url'])
+			await ctx.send(embed=embed)
+
 
 @bot.command()
 async def lewdneko(ctx):
+
 	if ctx.message.channel.is_nsfw() is False:
    		 await ctx.send("🔞 Pas de choses obscènes dans ce channel ! 🔞")
 	if ctx.message.channel.is_nsfw() is True:
-    		r = requests.get('https://nekos.life/api/v2/img/lewd')
-	js = r.json()
-	await ctx.channel.purge(limit=int(1))
-	embed = discord.Embed(colour=discord.Colour.orange())
-	embed.set_image(url=js['url'])
-	await ctx.send(embed=embed)
+		async with aiohttp.ClientSession() as cs:
+			async with cs.get('https://nekos.life/api/v2/img/lewd') as res:
+				js = await res.json()
+				await ctx.channel.purge(limit=int(1))
+				embed = discord.Embed(colour=discord.Colour.orange())
+				embed.set_image(url=js['url'])
+				await ctx.send(embed=embed)
 
 
 @bot.command()
 async def hloli(ctx):
+
 	if ctx.message.channel.is_nsfw() is False:
    		 await ctx.send("🔞 Pas de choses obscènes dans ce channel ! 🔞")
 	if ctx.message.channel.is_nsfw() is True:
-    		r = requests.get('https://nekos.life/api/v2/img/smallboobs')
-	js = r.json()
-	await ctx.channel.purge(limit=int(1))
-	embed = discord.Embed(colour=discord.Colour.orange())
-	embed.set_image(url=js['url'])
-	await ctx.send(embed=embed)
+		async with aiohttp.ClientSession() as cs:
+			async with cs.get('https://nekos.life/api/v2/img/smallboobs') as res:
+				js = await res.json()
+				await ctx.channel.purge(limit=int(1))
+				embed = discord.Embed(colour=discord.Colour.orange())
+				embed.set_image(url=js['url'])
+				await ctx.send(embed=embed)
 
 @bot.command()
 async def hentai(ctx):
+
 	if ctx.message.channel.is_nsfw() is False:
    		 await ctx.send("🔞 Pas de choses obscènes dans ce channel ! 🔞")
 	if ctx.message.channel.is_nsfw() is True:
-    		r = requests.get('https://nekos.life/api/v2/img/hentai')
-	js = r.json()
-	await ctx.channel.purge(limit=int(1))
-	embed = discord.Embed(colour=discord.Colour.orange())
-	embed.set_image(url=js['url'])
-	await ctx.send(embed=embed)
+		async with aiohttp.ClientSession() as cs:
+			async with cs.get('https://nekos.life/api/v2/img/hentai') as res:
+				js = await res.json()
+				await ctx.channel.purge(limit=int(1))
+				embed = discord.Embed(colour=discord.Colour.orange())
+				embed.set_image(url=js['url'])
+				await ctx.send(embed=embed)
 
 
 @bot.command()
@@ -181,6 +214,7 @@ async def play(ctx):
 
 async def autoreaction(ctx, msg):
     await msg.add_reaction(":enju:463080771465510912")
+
 
 
 bot.run(os.getenv("TOKEN"))
