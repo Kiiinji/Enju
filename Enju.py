@@ -10,7 +10,7 @@ import random
 import io
 from discord.ext import commands
 from discord.ext.commands import Bot
-
+discord.opus.load_opus('opus')
 
 bot = commands.Bot(command_prefix='!')
 bot.remove_command('help')
@@ -181,7 +181,6 @@ async def play(ctx):
 
 async def autoreaction(ctx, msg):
     await msg.add_reaction(":enju:463080771465510912")
-
 
 
 bot.run(os.getenv("TOKEN"))
