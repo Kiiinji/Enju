@@ -10,7 +10,7 @@ import random
 import io
 from discord.ext import commands
 from discord.ext.commands import Bot
-discord.opus.load_opus('')
+#discord.opus.load_opus('')
 
 bot = commands.Bot(command_prefix='!')
 bot.remove_command('help')
@@ -42,9 +42,9 @@ async def aide(ctx):
     em.add_field(name="!lewdneko", value="Envoie une image érotique de neko", inline=False)
     em.add_field(name="!hloli", value="Envoie une image H de loli", inline=False)
     em.add_field(name="!hentai", value="Envoie une image de hentai", inline=False)
-    em.add_field(name="!join", value="Fait rejoindre Enju dans le channel vocal actuel", inline=False)
-    em.add_field(name="!parle", value="Fait jouer un extrait aléatoire d'Enju dans ce channel vocal", inline=False)
-    em.add_field(name="!leave", value="Fait quitter Enju du channel vocal dans lequel elle se trouve", inline=False)
+  #  em.add_field(name="!join", value="Fait rejoindre Enju dans le channel vocal actuel", inline=False)
+   # em.add_field(name="!parle", value="Fait jouer un extrait aléatoire d'Enju dans ce channel vocal", inline=False)
+   # em.add_field(name="!leave", value="Fait quitter Enju du channel vocal dans lequel elle se trouve", inline=False)
     em.set_thumbnail(url = "https://i.gyazo.com/4f452d2b77748f7561902cc0fe824d37.png")
     await ctx.send(embed=em)
 
