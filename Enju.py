@@ -1,7 +1,6 @@
 #Enju
 import discord
 import random
-import youtube_dl
 import time
 import os
 import requests
