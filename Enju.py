@@ -220,10 +220,14 @@ async def avatar(ctx, user: discord.Member):
 async def join(ctx):
 	channel = ctx.message.author.voice.channel
 	await channel.connect()
+	msg = await ctx.send('💫Me voilà !💫')
+	await msg.add_reaction(":enju:463080771465510912")
 
 @bot.command()
 async def leave(ctx):
 	await ctx.voice_client.disconnect()
+	msg = await ctx.send('💮Bye !💮')
+	await msg.add_reaction(":enju:463080771465510912")
 
 
 @bot.command()
