@@ -220,13 +220,13 @@ async def avatar(ctx, user: discord.Member):
 async def join(ctx):
 	channel = ctx.message.author.voice.channel
 	await channel.connect()
-	msg = await ctx.send('💫Me voilà !💫')
+	msg = await ctx.send('💫 Me voilà !💫')
 	await msg.add_reaction(":enju:463080771465510912")
 
 @bot.command()
 async def leave(ctx):
 	await ctx.voice_client.disconnect()
-	msg = await ctx.send('💮Bye !💮')
+	msg = await ctx.send('💨 Bye !💨')
 	await msg.add_reaction(":enju:463080771465510912")
 
 
@@ -246,19 +246,19 @@ async def play(ctx, url):
 @bot.command()
 async def pause(ctx):
 	ctx.voice_client.pause()
-	msg = await ctx.send('⛔Vidéo mise en pause !⛔')
+	msg = await ctx.send('⛔ Vidéo mise en pause ! ⛔')
 	await msg.add_reaction(":enju:463080771465510912")
 
 @bot.command()
 async def resume(ctx):
 	ctx.voice_client.resume()
-	msg = await ctx.send('🎶Reprise de la vidéo !🎶')
+	msg = await ctx.send('🎶 Reprise de la vidéo ! 🎶')
 	await msg.add_reaction(":enju:463080771465510912")
 
 @bot.command()
 async def stop(ctx):
 	ctx.voice_client.stop()
-	msg = await ctx.send('❌Vidéo arrêtée !❌')
+	msg = await ctx.send('❌ Vidéo arrêtée ! ❌')
 	await msg.add_reaction(":enju:463080771465510912")
 
 async def autoreaction(ctx, msg):
