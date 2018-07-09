@@ -80,7 +80,6 @@ async def aide(ctx):
     em.add_field(name="!neko", value="Envoie une image de neko", inline=False)
     em.add_field(name="!loli", value="Envoie une image de loli", inline=False)
     em.add_field(name="!lewdneko", value="Envoie une image érotique de neko", inline=False)
-    em.add_field(name="!hloli", value="Envoie une image H de loli", inline=False)
     em.add_field(name="!hentai", value="Envoie une image de hentai", inline=False)
     em.add_field(name="!join", value="Fait rejoindre Enju dans le channel vocal actuel", inline=False)
     em.add_field(name="!parle", value="Fait jouer un extrait aléatoire d'Enju dans ce channel vocal", inline=False)
@@ -94,6 +93,14 @@ async def aide(ctx):
 
     em.set_thumbnail(url = "https://i.gyazo.com/4f452d2b77748f7561902cc0fe824d37.png")
     await ctx.send(embed=em)
+
+
+@bot.event
+async def on_member_join(member):
+    await member.send('Bienvenue dans la Tanière des weebs !! Si jamais tu souhaites avoir ton petit nom, il te suffit du Nom et de la Couleur dans le channel #demande-de-role ! Sur ce, je te souhaite une bonne compagnie dans cette tanière ! Une dernière chose, cette tanière possède son propre bot codé par Kinji ! Si jamais tu veux voir ses commandes utilise !aide ! 😉')
+    role = discord.utils.get(member.guild.roles, name="Membres")
+    await member.add_roles(role)
+
 
 
 @bot.command()
@@ -164,20 +171,6 @@ async def lewdneko(ctx):
 
 
 @bot.command()
-async def hloli(ctx):
-
-	if ctx.message.channel.is_nsfw() is False:
-   		 await ctx.send("🔞 Pas de choses obscènes dans ce channel ! 🔞")
-	if ctx.message.channel.is_nsfw() is True:
-		async with aiohttp.ClientSession() as cs:
-			async with cs.get('https://nekos.life/api/v2/img/smallboobs') as res:
-				js = await res.json()
-				await ctx.channel.purge(limit=int(1))
-				embed = discord.Embed(colour=discord.Colour.orange())
-				embed.set_image(url=js['url'])
-				await ctx.send(embed=embed)
-
-@bot.command()
 async def hentai(ctx):
 
 	if ctx.message.channel.is_nsfw() is False:
@@ -235,7 +228,7 @@ async def leave(ctx):
 async def play(ctx, url):
 
 	url = await ctx.bot.loop.run_in_executor(None, get_metadata, url)
-	msg = await ctx.send('⌛Chargement de la vidéo..⏳')
+	msg = await ctx.send('🏁Et voilà !🏁')
 	await msg.add_reaction(":enju:463080771465510912")
 
 
