@@ -112,6 +112,11 @@ async def purge(ctx, amount):
 		msg = await ctx.send("Seul mon Kinji peut utiliser cette commande !")
 		await autoreaction(ctx, msg)
 
+@bot.command()
+async def dommage(ctx):
+    await ctx.channel.purge(limit=int(1))
+    msg = await ctx.send("https://www.youtube.com/watch?v=8AF-Sm8d8yk")
+    await msg.add_reaction(":enju:463080771465510912")
 
 
 @bot.command()
@@ -124,6 +129,7 @@ async def parle(ctx):
 async def enju(ctx):
     fp = "Data/Img/Enju/{}".format(random.choice(os.listdir("Data/Img/Enju")))
     await ctx.send(file=discord.File(fp))
+
 
 @bot.command()
 async def loli(ctx):
@@ -257,7 +263,6 @@ async def stop(ctx):
 
 async def autoreaction(ctx, msg):
     await msg.add_reaction(":enju:463080771465510912")
-
 
 
 bot.run(os.getenv("TOKEN"))
