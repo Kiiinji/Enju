@@ -77,6 +77,7 @@ async def aide(ctx):
     em.add_field(name="!avatar", value="Affiche l'avatar d'un utilisateur", inline=False)
     em.add_field(name="!emoji", value="Affiche un emoji custom du serveur en plus gros", inline=False)
     em.add_field(name="!jtm", value="Déclare ta flamme à Enju", inline=False)
+    em.add_field(name="!dommage", value="Ah c'est dommage", inline=False)
     em.add_field(name="!neko", value="Envoie une image de neko", inline=False)
     em.add_field(name="!loli", value="Envoie une image de loli", inline=False)
     em.add_field(name="!lewdneko", value="Envoie une image érotique de neko", inline=False)
@@ -263,6 +264,7 @@ async def stop(ctx):
 
 async def autoreaction(ctx, msg):
     await msg.add_reaction(":enju:463080771465510912")
+
 
 
 bot.run(os.getenv("TOKEN"))
