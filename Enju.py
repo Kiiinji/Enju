@@ -133,6 +133,12 @@ async def enju(ctx):
 
 
 @bot.command()
+async def batman(ctx):
+    fp = "Data/Img/Batman/{}".format(random.choice(os.listdir("Data/Img/Batman")))
+    await ctx.send(file=discord.File(fp))
+
+
+@bot.command()
 async def loli(ctx):
     fp = "Data/Img/Loli/{}".format(random.choice(os.listdir("Data/Img/Loli")))
     await ctx.send(file=discord.File(fp))
