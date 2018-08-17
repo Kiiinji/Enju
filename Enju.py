@@ -137,6 +137,16 @@ async def batman(ctx):
     fp = "Data/Img/Batman/{}".format(random.choice(os.listdir("Data/Img/Batman")))
     await ctx.send(file=discord.File(fp))
 
+@bot.command()
+async def redhood(ctx):
+    fp = "Data/Img/RedHood/{}".format(random.choice(os.listdir("Data/Img/RedHood")))
+    await ctx.send(file=discord.File(fp))
+
+@bot.command()
+async def flash(ctx):
+    fp = "Data/Img/Flash/{}".format(random.choice(os.listdir("Data/Img/Flash")))
+    await ctx.send(file=discord.File(fp))
+
 
 @bot.command()
 async def loli(ctx):
@@ -267,6 +277,7 @@ async def stop(ctx):
 	ctx.voice_client.stop()
 	msg = await ctx.send('❌ Vidéo arrêtée ! ❌')
 	await msg.add_reaction(":enju:463080771465510912")
+
 
 async def autoreaction(ctx, msg):
     await msg.add_reaction(":enju:463080771465510912")
