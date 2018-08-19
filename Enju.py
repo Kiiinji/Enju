@@ -108,9 +108,16 @@ async def on_member_join(member):
 async def purge(ctx, amount):
 	if ctx.author.id == 222017802087825408:
 		await ctx.channel.purge(limit=int(amount))
-
+	elif ctx.author.id == 363059393601994752:
+		await ctx.channel.purge(limit=int(amount)) 
+	elif ctx.author.id == 339157038384939008:
+		await ctx.channel.purge(limit=int(amount))
+	elif ctx.author.id == 259424383628607493:
+		await ctx.channel.purge(limit=int(amount))
+	elif ctx.author.id == 298209441185005578:
+		await ctx.channel.purge(limit=int(amount))
 	else :
-		msg = await ctx.send("Seul mon Kinji peut utiliser cette commande !")
+		msg = await ctx.send("Seul mon Kinji (et ses admins) peuvent utiliser cette commande !")
 		await autoreaction(ctx, msg)
 
 @bot.command()
@@ -281,7 +288,6 @@ async def stop(ctx):
 
 async def autoreaction(ctx, msg):
     await msg.add_reaction(":enju:463080771465510912")
-
 
 
 bot.run(os.getenv("TOKEN"))
