@@ -4,4 +4,4 @@ requests
 opuslib
 PyNaCl
 aiohttp
-youtube-dl -U
+sudo pip install -U youtube-dl
