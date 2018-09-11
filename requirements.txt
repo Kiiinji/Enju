@@ -4,4 +4,4 @@ requests
 opuslib
 PyNaCl
 aiohttp
-youtube-dl
+youtube-dl -U
