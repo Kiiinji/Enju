@@ -4,4 +4,4 @@ requests
 opuslib
 PyNaCl
 aiohttp
-brew install youtube-dl
+youtube-dl
