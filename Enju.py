@@ -192,7 +192,7 @@ async def lewdneko(ctx):
    		 await ctx.send("🔞 Pas de choses obscènes dans ce channel ! 🔞")
 	if ctx.message.channel.is_nsfw() is True:
 		async with aiohttp.ClientSession() as cs:
-			async with cs.get('https://nekos.life/api/v2/img/lewd') as res:
+			async with cs.get('https://nekos.life/api/lewd/neko') as res:
 				js = await res.json()
 				await ctx.channel.purge(limit=int(1))
 				embed = discord.Embed(colour=discord.Colour.orange())
