@@ -15,6 +15,7 @@ from discord import opus
 import discord
 from discord.ext import commands
 import youtube_dl
+import ffmpeg
 
 
 def get_metadata(query):
