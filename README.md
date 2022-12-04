@@ -1,2 +1,2 @@
 # Enju
-Le meilleur bot du monde, tout simplement.
+Petit essai rapide
