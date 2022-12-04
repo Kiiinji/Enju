@@ -80,9 +80,6 @@ async def aide(ctx):
     em.add_field(name="!jtm", value="Déclare ta flamme à Enju", inline=False)
     em.add_field(name="!dommage", value="Ah c'est dommage", inline=False)
     em.add_field(name="!neko", value="Envoie une image de neko", inline=False)
-    em.add_field(name="!loli", value="Envoie une image de loli", inline=False)
-    em.add_field(name="!lewdneko", value="Envoie une image érotique de neko", inline=False)
-    em.add_field(name="!hentai", value="Envoie une image de hentai", inline=False)
     em.add_field(name="!join", value="Fait rejoindre Enju dans le channel vocal actuel", inline=False)
     em.add_field(name="!parle", value="Fait jouer un extrait aléatoire d'Enju dans ce channel vocal", inline=False)
     em.add_field(name="!play", value="Joue une musique depuis un lien youtube dans ce channel vocal", inline=False)
@@ -157,12 +154,6 @@ async def flash(ctx):
 
 
 @bot.command()
-async def loli(ctx):
-    fp = "Data/Img/Loli/{}".format(random.choice(os.listdir("Data/Img/Loli")))
-    await ctx.send(file=discord.File(fp))
-
-
-@bot.command()
 async def jtm(ctx):
     if ctx.author.id == 222017802087825408:
         msg = await ctx.send("Moi aussi !! ❤")
@@ -186,34 +177,9 @@ async def neko(ctx):
 			await ctx.send(embed=embed)
 
 
-@bot.command()
-async def lewdneko(ctx):
-
-	if ctx.message.channel.is_nsfw() is False:
-   		 await ctx.send("🔞 Pas de choses obscènes dans ce channel ! 🔞")
-	if ctx.message.channel.is_nsfw() is True:
-		async with aiohttp.ClientSession() as cs:
-			async with cs.get('https://nekos.life/api/lewd/neko') as res:
-				js = await res.json()
-				await ctx.channel.purge(limit=int(1))
-				embed = discord.Embed(colour=discord.Colour.orange())
-				embed.set_image(url=js['url'])
-				await ctx.send(embed=embed)
 
 
-@bot.command()
-async def hentai(ctx):
 
-	if ctx.message.channel.is_nsfw() is False:
-   		 await ctx.send("🔞 Pas de choses obscènes dans ce channel ! 🔞")
-	if ctx.message.channel.is_nsfw() is True:
-		async with aiohttp.ClientSession() as cs:
-			async with cs.get('https://nekos.life/api/v2/img/hentai') as res:
-				js = await res.json()
-				await ctx.channel.purge(limit=int(1))
-				embed = discord.Embed(colour=discord.Colour.orange())
-				embed.set_image(url=js['url'])
-				await ctx.send(embed=embed)
 
 
 @bot.command()
